@@ -316,8 +316,6 @@ class FloatingAction extends Component {
     if (onPressItem) {
       onPressItem(itemName, keepOnPress);
     }
-    console.log(itemName)
-    console.log(keepOnPress)
     if(!keepOnPress) this.reset();
   };
 
