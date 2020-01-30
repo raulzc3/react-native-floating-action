@@ -35,9 +35,9 @@ class FloatingActionItem extends Component {
   }
 
   handleOnPress = () => {
-    const { name, onPress } = this.props;
+    const { name, onPress, keepOnPress } = this.props;
 
-    onPress(name);
+    onPress(name, keepOnPress);
   };
 
   renderText() {
@@ -66,26 +66,15 @@ class FloatingActionItem extends Component {
         <View
           key="text"
           style={[
-            styles.textContainer,
+            {marginLeft: 10, backgroundColor: '#595959', padding: 2, borderRadius: 2},
             styles[`${position}TextContainer`],
-            {
-              backgroundColor: textBackground,
-              elevation: textElevation || elevation,
-              shadowOffset: {
-                height: textElevation || elevation
-              }
-            },
-            shadow,
-            textContainerStyle
           ]}
         >
           <Text
             style={[
-              styles.text,
               {
-                color: textColor
-              },
-              textStyle
+                color: '#fff'
+              }
             ]}
             {...textProps}
           >
@@ -169,6 +158,7 @@ class FloatingActionItem extends Component {
       distanceToEdgeActionContainer.paddingLeft = this.distanceToHorizontalEdge + margin;
     } else if (position === "right") {
       if (render) {
+        components.push(this.renderText());
         components.push(render({ key: name }));
       } else {
         components.push(this.renderText());
@@ -180,6 +170,7 @@ class FloatingActionItem extends Component {
     } else {
       components.push(this.renderButton());
     }
+    components.push(this.renderText());
 
     return (
       <Touchable

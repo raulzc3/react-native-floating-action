@@ -203,11 +203,10 @@ class FloatingAction extends Component {
         />
       );
     }
-
     return <AddIcon width={iconWidth} height={iconHeight} backgroundColor={iconColor}  />;
   };
 
-  reset = () => {
+  reset = (keepOnPress) => {
     const { animated, onClose } = this.props;
 
     if (animated) {
@@ -311,14 +310,15 @@ class FloatingAction extends Component {
     this.reset();
   };
 
-  handlePressItem = itemName => {
+  handlePressItem = (itemName, keepOnPress) => {
     const { onPressItem } = this.props;
 
     if (onPressItem) {
-      onPressItem(itemName);
+      onPressItem(itemName, keepOnPress);
     }
-
-    this.reset();
+    console.log(itemName)
+    console.log(keepOnPress)
+    if(!keepOnPress) this.reset();
   };
 
   renderMainButton() {
