@@ -413,15 +413,16 @@ class FloatingAction extends Component {
       borderRadius: buttonSize / 2
     };
 
+    let left = (DEVICE_WIDTH/2) - (buttonSize/2);
     return (
       <Animated.View
         style={[
           styles.buttonContainer,
           sizeStyle,
-          styles[`${position}Button`],
           propStyles,
           animatedVisibleView,
-          this.getShadow()
+          this.getShadow(),
+          {borderWidth: 3, borderColor: '#fff', left: left}
         ]}
         accessible
         accessibilityLabel="Floating Action Button"
