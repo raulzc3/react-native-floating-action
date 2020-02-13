@@ -16,6 +16,8 @@ import AddIcon from "./AddIcon";
 
 import { isIphoneX } from "./utils/platform";
 import { getTouchableComponent, getRippleProps } from "./utils/touchable";
+import {moderateScale} from "../../../app/utils/Scaling";
+import {colors} from "../../../app/utils/Style"
 
 const DEVICE_WIDTH = Dimensions.get("window").width;
 
@@ -177,6 +179,7 @@ class FloatingAction extends Component {
       overrideWithAction,
       iconWidth,
       iconHeight,
+      iconSize,
       iconColor
     } = this.props;
 
@@ -203,7 +206,7 @@ class FloatingAction extends Component {
         />
       );
     }
-    return <AddIcon width={iconWidth} height={iconHeight} backgroundColor={iconColor}  />;
+    return <AddIcon width={iconSize ? iconSize : iconWidth} height={iconSize ? iconSize : iconHeight} backgroundColor={iconColor}  />;
   };
 
   reset = (keepOnPress) => {
@@ -422,7 +425,7 @@ class FloatingAction extends Component {
           propStyles,
           animatedVisibleView,
           this.getShadow(),
-          {borderWidth: 3, borderColor: '#fff', left: left}
+          {borderWidth: moderateScale(3), borderColor: colors.white, left: left}
         ]}
         accessible
         accessibilityLabel="Floating Action Button"
@@ -672,7 +675,7 @@ const styles = StyleSheet.create({
   rightButton: {},
   leftButton: {},
   centerButton: {
-    left: DEVICE_WIDTH / 2 - 28
+    left: DEVICE_WIDTH / 2 - moderateScale(32.5)
   },
   buttonTextContainer: {
     flex: 1,
