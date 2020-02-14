@@ -425,11 +425,25 @@ class FloatingAction extends Component {
           propStyles,
           animatedVisibleView,
           this.getShadow(),
-          {borderWidth: moderateScale(3), borderColor: colors.white, left: left}
+          {left: left, backgroundColor: this.state.active ? '#909090' :'white', alignItems: 'center', justifyContent: 'center', zIndex: 10 }
         ]}
         accessible
         accessibilityLabel="Floating Action Button"
       >
+        <Animated.View
+            style={[
+              this.getShadow(),
+              {elevation: this.props.elevation,
+                height: this.props.buttonSize-10,
+                width: this.props.buttonSize-10,
+                backgroundColor: this.props.color,
+                borderRadius: this.props.buttonSize-10,
+                alignItems: 'center',
+                justifyContent: 'center'}
+            ]}
+            accessible
+            accessibilityLabel="Floating Action Button"
+        >
         <Touchable
           {...getRippleProps(mainButtonColor)}
           style={[styles.button, sizeStyle]}
@@ -442,6 +456,7 @@ class FloatingAction extends Component {
             {this.getIcon()}
           </Animated.View>
         </Touchable>
+        </Animated.View>
       </Animated.View>
     );
   }
@@ -657,18 +672,17 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0,
     elevation: 0,
-    zIndex: 0
+    zIndex: 5
   },
   buttonContainer: {
     overflow: Platform.OS === "ios" ? "visible" : "hidden",
-    zIndex: 2,
+    zIndex: 10,
     alignItems: "center",
     justifyContent: "center",
-    elevation: 5,
     position: "absolute"
   },
   button: {
-    zIndex: 3,
+    zIndex: 10,
     alignItems: "center",
     justifyContent: "center"
   },
