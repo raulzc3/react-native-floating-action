@@ -66,14 +66,15 @@ class FloatingActionItem extends Component {
         <View
           key="text"
           style={[
-            {marginLeft: 10, backgroundColor: '#595959', padding: 2, borderRadius: 2},
+            {marginLeft: 20, backgroundColor: '#595959', padding: 3, borderRadius: 2},
             styles[`${position}TextContainer`],
           ]}
         >
           <Text
             style={[
               {
-                color: '#fff'
+                color: '#fff',
+                fontSize: 15
               }
             ]}
             {...textProps}
@@ -101,9 +102,9 @@ class FloatingActionItem extends Component {
     const propStyles = {
       tintColor: tintColor,
       backgroundColor: color,
-      width: buttonSize,
-      height: buttonSize,
-      borderRadius: buttonSize / 2
+      width: 45,
+      height: 45,
+      borderRadius: 45 / 2
     };
 
     return (
@@ -243,7 +244,7 @@ FloatingActionItem.defaultProps = {
   distanceToEdge: 30,
   buttonSize: 40,
   textElevation: 5,
-  textColor: "#444444",
+  textColor: "#fff",
   textBackground: "#ffffff",
   margin: 8,
   shadow: {
@@ -290,7 +291,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    elevation: 5
+    elevation: 5,
+    left: 7.5
   },
   iconLogo: {
     resizeMode: "cover",
