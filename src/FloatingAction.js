@@ -22,13 +22,13 @@ import {colors} from "../../../app/utils/Style"
 const DEVICE_WIDTH = Dimensions.get("window").width;
 
 const DEFAULT_SHADOW_PROPS = {
-  shadowOpacity: 0.35,
+  shadowOpacity: 0.1,
   shadowOffset: {
     width: 0,
-    height: 5
+    height: 2
   },
   shadowColor: "#000000",
-  shadowRadius: 3
+  shadowRadius: 2
 };
 
 class FloatingAction extends Component {
@@ -417,6 +417,7 @@ class FloatingAction extends Component {
     };
 
     let left = (DEVICE_WIDTH/2) - (buttonSize/2);
+
     return (
       <Animated.View
         style={[
@@ -425,7 +426,7 @@ class FloatingAction extends Component {
           propStyles,
           animatedVisibleView,
           this.getShadow(),
-          {left: left, backgroundColor: this.state.active ? '#909090' :'white', alignItems: 'center', justifyContent: 'center', zIndex: 10 }
+          {left: left, backgroundColor: 'transparent', alignItems: 'center', justifyContent: 'center', zIndex: 10 }
         ]}
         accessible
         accessibilityLabel="Floating Action Button"
@@ -636,7 +637,8 @@ FloatingAction.defaultProps = {
   iconColor: '#fff',
   mainVerticalDistance: 0,
   animated: true,
-  shadow: {}
+  shadow: {},
+  circleColor: 'white'
 };
 
 const styles = StyleSheet.create({
