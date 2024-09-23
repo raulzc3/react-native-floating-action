@@ -15,7 +15,8 @@ class FloatingActionItem extends Component {
 
     if (prevProps.active !== active && animated) {
       Animated.spring(this.animation, {
-        toValue: active ? 1 : 0
+        toValue: active ? 1 : 0,
+        useNativeDriver: false
       }).start();
     }
   }
@@ -219,7 +220,6 @@ FloatingActionItem.propTypes = {
     shadowColor: PropTypes.string,
     shadowRadius: PropTypes.number
   }),
-  // not on doc
   textElevation: PropTypes.number,
   // not modified by user
   position: PropTypes.oneOf(["left", "right", "center"]),
